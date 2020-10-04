@@ -2,3 +2,14 @@
 <div>
   <%= link_to  "logout", destroy_user_session_path, method: :delete %>
 </div>
+
+<div>
+  <%= link_to  "写真投稿", [:new, :post] %>
+</div>
+
+<% current_user.posts.each do |post| %>
+  <div>
+    <p><%= post.caption %></p>
+    <%= image_tag post.image %>
+  </div>
+<% end %>
