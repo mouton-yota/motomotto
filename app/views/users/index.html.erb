@@ -1,0 +1,16 @@
+<h3>タイムライン</h3>
+<hr>
+<% @feeds.each do |post| %>
+  <div>
+    <div>
+      <%= link_to post.user.email, [post.user] %>
+    </div>
+    <div>
+      <%= link_to [post] do %>
+        <%= image_tag post.image %>
+      <% end %>
+    </div>
+    <div>
+      <%= post.caption %>
+  </div>
+<% end %>

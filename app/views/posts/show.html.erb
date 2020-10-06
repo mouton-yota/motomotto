@@ -1,0 +1,40 @@
+<div>
+  <div>
+    <%= link_to @post.user.email, [@post.user] %>
+  </div>
+  <div>
+    <%= image_tag @post.image %>
+  </div>
+  <div>
+    <%= @post.caption %>
+</div>
+<% @post.comments.each do |comment| %>
+  <div>
+    <%= link_to comment.user.email, [comment.user] %>
+  </div>
+  <div>
+    <%= comment.body %>
+  </div>
+  <div>
+    <% if comment.user == current_user %>
+      <%= link_to "delete", [@post, comment], method: :delete %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= form_with model: [@post, @comment], local: true do |f| %>
+    <div>
+      <%= f.text_field :body %>
+    </div>
+      <%= f.submit %>
+  <% end %>
+
+
+  <% if current_user.likes.exists?(post_id: @post.id) %>
+   <%= link_to  "unlike", [@post, :like], method: :delete %>
+  <% else %>
+   <%= link_to  "like", [@post, :like], method: :post %>
+  <% end %>
+
+<% end %>
