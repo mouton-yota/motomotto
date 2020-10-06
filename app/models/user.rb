@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :target_user
   has_many :followers, through: :passive_relationships, source: :user
   has_many :posts
+  has_many :comments
+  has_many :likes
 end

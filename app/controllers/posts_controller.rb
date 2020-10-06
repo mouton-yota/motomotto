@@ -1,9 +1,14 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:new, :create]
 
     def new
       @post = current_user.posts.new
     #　ログインユーザーのidも保存する為
+    end
+
+    def show
+      @post = Post.find(params[:id])
+      @comment = Comment.new
     end
 
     def create
