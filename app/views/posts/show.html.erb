@@ -23,6 +23,11 @@
 <% end %>
 
 <% if user_signed_in? %>
+  <% if @comment.errors.any? %>
+    <% @comment.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  <% end %>
   <%= form_with model: [@post, @comment], local: true do |f| %>
     <div>
       <%= f.text_field :body %>
@@ -38,3 +43,8 @@
   <% end %>
 
 <% end %>
+<div>
+
+    <%= link_to  "delete", [@post], method: :delete %>
+
+</div>
