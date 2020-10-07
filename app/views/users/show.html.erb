@@ -17,6 +17,11 @@
 <div>
   <%= link_to "likes", [@user, :likes] %>
 </div>
+<div>
+  <% if @post.user == current_user %>
+    <%= link_to  "delete", [@post], method: :delete %>
+  <% end %>
+</div>
 
 <% @user.posts.each do |post| %>
   <div>

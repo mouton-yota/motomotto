@@ -21,6 +21,11 @@ class PostsController < ApplicationController
       end
     end
     
+    def destroy
+      current_user.posts.find(params[:id]).destroy
+      redirect_to [current_user]
+    end
+
     private
 
     def post_params
