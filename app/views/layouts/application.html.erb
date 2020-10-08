@@ -19,7 +19,7 @@
   <div class="collapse navbar-collapse" id="Navber">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">ホーム <span class="sr-only">(現位置)</span></a>
+        <%= link_to  "top", [:root], class: "navbar-item" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">リンク</a>
@@ -45,6 +45,13 @@
     </form>
   </div><!-- /.navbar-collapse -->
 </nav>
-    <%= yield %>
+  <section class="section">
+    <div class="cloumus is-centered">
+      <div class="columu is-5">
+          <%= yield %>
+      </div>
+    </div>
+  </section>
+
   </body>
 </html>
