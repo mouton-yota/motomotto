@@ -26,7 +26,8 @@
         <%= @user.profile %>
       </div>
       <div class="col-xs-12">
-        <p>バイク</p>
+        <p>所有しているバイク</p>
+        <%= @user.bike %>
       </div>
       <% if current_user == @user %>
         <div class="col-xs-12">

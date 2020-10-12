@@ -12,6 +12,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <% if user_signed_in? %>
+              <%= form_tag(searches_path, method: :get) do %>
+                <%= text_field_tag (:word) %>
+                <%= select_tag 'range' ,options_for_select([['バイク名', '1'], ['その他', '2']]) %>
+                <%= submit_tag "検索" %>
+              <% end %>
             <li class="nav-item active">
               <%= link_to "ホーム", root_path, class: "nav-link text-white" %>
             </li>

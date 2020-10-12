@@ -5,8 +5,13 @@
   <%= bootstrap_devise_error_messages! %>
 
 　<div class="form-group">
-    <%= f.label :ユーザネーム %>
+    <%= f.label :ユーザーネーム %>
     <%= f.text_field :name, autofocus: true, autocomplete: 'name', :placeholder => "ユーザーネーム", class: "form-control" %>
+  </div>
+
+  　<div class="form-group">
+    <%= f.label :所有バイク %>
+    <%= f.text_field :bike, autofocus: true, autocomplete: 'bike', :placeholder => "CB400SF 等", class: "form-control" %>
   </div>
 
   <div class="form-group">

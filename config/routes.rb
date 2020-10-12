@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'home#top'
+  get 'searches', to: 'searches#search'
 
   resources :posts do
     resource :like
