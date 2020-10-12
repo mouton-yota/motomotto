@@ -4,8 +4,22 @@ class UsersController < ApplicationController
   end
 
   def index
-    @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
-    # []内で*を入れる事で、二つの条件を展開、自分とフォロワーの投稿がタイムラインに出るようにする
-    # オプションを付けて、投稿が新しい物が上に来るようにする
+    @users = User.all
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user)
+  end
+
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :profile, :profile_image)
   end
 end

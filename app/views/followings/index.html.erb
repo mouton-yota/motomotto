@@ -1,5 +1,25 @@
-<% @followings.each do |user| %>
-  <div>
-    <%= link_to user.email, [user] %>
+<div class="container">
+  <h3>フォロー　一覧</h3>
+  <hr>
+  <div class="row">
+    <% @followings.each do |user| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, :fill, 300, 300, fallback: "no_image.jpeg", size: '300x300' %>
+        <% end %>
+          <div class="card-body">
+          <%= user.name %>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+              </div>
+              <small class="text-muted">9分</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

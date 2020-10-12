@@ -20,11 +20,27 @@ class PostsController < ApplicationController
         render :new
       end
     end
+
+    def edit
+      @post = Post.find(params[:id])
+    end
+    def update
+      @post = Post.find(params[:id])
+      @post.update(post_params)
+      redirect_to post_path(@post)
+    end
     
     def destroy
       current_user.posts.find(params[:id]).destroy
       redirect_to [current_user]
     end
+
+    def index
+      @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+      # []内で*を入れる事で、二つの条件を展開、自分とフォロワーの投稿がタイムラインに出るようにする
+      # オプションを付けて、投稿が新しい物が上に来るようにする
+    end
+
 
     private
 
