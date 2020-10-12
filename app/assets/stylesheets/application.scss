@@ -13,3 +13,19 @@
  */
 
  @import "bootstrap";
+
+
+.container-login {
+    @extend .container-fluid;
+    max-width: 576px;
+    padding: 2rem;
+  }
+  
+  
+  .alert-notice {
+    @extend .alert-info;
+  }
+  
+  .alert-alert {
+    @extend .alert-danger;
+  }

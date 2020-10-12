@@ -2,7 +2,7 @@
   <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
     <div class="card">
       <div class="card-header">
-        写真投稿
+        写真編集
       </div>
       <div class="card-body">
         <%= form_with model: @post, local: true do |f| %>
@@ -17,7 +17,7 @@
           <div class="mb-3">
             <%= f.file_field :image %>
           </div>
-          <%= f.submit "投稿する", class: "btn btn-primary btn-block" %>
+          <%= f.submit "編集する", class: "btn btn-success btn-block" %>
         <% end %>
       </div>
     </div>
