@@ -1,0 +1,60 @@
+<div class="container-login">
+<h2>アカウント編集</h2>
+
+<%= form_for @user do |f| %>
+  <%= bootstrap_devise_error_messages! %>
+
+　<div class="form-group">
+    <%= f.label :ユーザーネーム %>
+    <%= f.text_field :name, autofocus: true, autocomplete: 'name', :placeholder => "ユーザーネーム", class: "form-control" %>
+  </div>
+
+  　<div class="form-group">
+    <%= f.label :所有バイク %>
+    <%= f.text_field :bike, autofocus: true, autocomplete: 'bike', :placeholder => "CB400SF 等", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+
+    <small class="form-text text-muted">空欄のままなら変更しません</small>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+
+    <small class="form-text text-muted">変更を反映するには現在のパスワードを入力してください</small>
+  </div>
+
+　<div class="form-group">
+            <%= f.label :profile, "プロフィール", class: "label" %><br>
+            <%= f.text_area :profile, class: "textarea", size: "50x5" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :profile_image, "プロフィール画像", class: "label" %><br>
+            <%= f.attachment_field :profile_image, class: "input" %>
+          </div>
+
+  <div class="form-group">
+    <%= f.submit "更新", class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>
+
+<hr class="devise-link my-5">
+  <div class="form-group">
+    <%= link_to "トップページ", root_path, class: 'btn btn-info btn-block mb-4' %>
+    <%= link_to "アカウント削除", registration_path(resource_name), data: {confirm: "本当によろしいですか？"}, method: :delete, class: 'btn btn-danger btn-block' %>
+  </div>

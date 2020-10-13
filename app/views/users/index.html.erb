@@ -1,0 +1,24 @@
+<h3>ユーザー一覧</h3>
+<hr>
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, :fill, 300, 300, fallback: "no_image.jpeg", size: '300x300' %>
+        <% end %>
+          <div class="card-body">
+          <%= user.name %>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <p>所有しているバイク</p><br>
+                <%= user.bike %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

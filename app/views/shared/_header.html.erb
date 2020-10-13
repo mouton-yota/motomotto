@@ -1,0 +1,51 @@
+<header class="sticky-top">
+ <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <%= link_to posts_path do %>
+        <div class="navbar-brand text-white" >Motomotto</div>
+        <% end %>
+        <ul class="navbar-nav mr-auto">
+        </ul>
+      <div class="navbar-right">
+      <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <%= form_tag(searches_path, method: :get) do %>
+                <%= text_field_tag (:word) %>
+                <%= select_tag 'range' ,options_for_select([['バイク名', '1'], ['その他', '2']]) %>
+                <%= submit_tag "検索" %>
+              <% end %>
+            <li class="nav-item active">
+              <%= link_to "ホーム", posts_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "マイページ", user_path(current_user), class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "投稿", [:new, :post], class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
+            </li>
+              <% else %>
+            <li class="nav-item active">
+              <%= link_to "ホーム", root_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "アバウト", about_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white" %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+ 

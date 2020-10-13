@@ -1,0 +1,25 @@
+<div class="d-flex flex-column align-items-center mt-3">
+  <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
+    <div class="card">
+      <div class="card-header">
+        写真編集
+      </div>
+      <div class="card-body">
+        <%= form_with model: @post, local: true do |f| %>
+          <div class="form-group row mt-2">
+            <div class="col-auto pr-0">
+              <%= attachment_image_tag current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpeg", size: '50x50' %>
+            </div>
+            <div class="col pl-0">
+              <%= f.text_area :caption, size: "50x5", placeholder: "コメント" %>
+            </div>
+          </div>
+          <div class="mb-3">
+            <%= f.file_field :image %>
+          </div>
+          <%= f.submit "編集する", class: "btn btn-success btn-block" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
