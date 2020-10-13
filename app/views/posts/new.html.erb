@@ -11,6 +11,11 @@
               <%= attachment_image_tag current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpeg", size: '50x50' %>
             </div>
             <div class="col pl-0">
+              <% if @post.errors.any? %>
+                <% @post.errors.full_messages.each do |message| %>
+                  <div><%= message %></div>
+                <% end %>
+              <% end %>
               <%= f.text_area :caption, size: "50x5", placeholder: "コメント" %>
             </div>
           </div>
