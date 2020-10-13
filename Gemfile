@@ -75,3 +75,6 @@ gem "refile-mini_magick"
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'devise-bootstrap-views', '~> 1.0'
+
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false

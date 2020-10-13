@@ -29,3 +29,31 @@
   .alert-alert {
     @extend .alert-danger;
   }
+
+
+
+  .c{
+    width:80%;
+    max-width: 100%;
+    height: auto;
+    }
+
+  .example {/*親div*/
+    position: relative;/*相対配置*/
+    }
+  
+  .example p {
+    position: absolute;/*絶対配置*/
+    color: rgba(43, 41, 41, 0.7);/*文字は白に*/
+    font-weight: bold; /*太字に*/
+  font-size: 2em;/*サイズ2倍*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
+    top: 10%;
+    left: 10%;
+    margin:10;
+   padding:10;
+    }
+  
+  .example img {
+    width: 100%;
+    }

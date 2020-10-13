@@ -1,42 +1,23 @@
 <div class="container">
-  <h3>タイムライン</h3>
-  <hr>
-  <% @feeds.each do |post| %>
-    <div class="col-md-8 col-md-2 mx-auto">
-      <div class="card-wrap">
-        <div class="card">
-          <div class="card-header align-items-center d-flex">
-            <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpeg", size: '50x50' %>
-            <%= link_to post.user.name, [post.user] %>
-          </div>
-          <%= link_to [post] do %>
-            <%= image_tag post.image, class: "card-img-top" %>
-          <% end %>
-          <div class="card-body">
-            <div class="row parts">
-              <div>
-              <%= post.caption %>
-              </div>
-              <hr>
-              <p>コメント数<%= post.comments.count %>件</p>　　
-              <% if current_user.likes.exists?(post_id: post.id) %>
-          <%= link_to post_like_path(post), method: :delete do %>
-            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-            <%= post.likes.count %>
-          <% end %>
-        <% else %>
-          <%= link_to post_like_path(post), method: :post do %>
-            <i class="fa fa-heart-o" aria-hidden="true"></i>
-            <%= post.likes.count %>
-          <% end %>
-        <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="a">
+    <div class="example">
+      <p>ようこそMotomottoへ</p>	
+      <div class="b"><img class="c" src="/assets/bike1.jpg"></div>
     </div>
-  <br>
-  <% end %>
+    <div class="example">
+      <p>ここはあなたのバイクや</p>
+      <div class="b"><img class="c" src="/assets/bike2.jpg"></div>
+    </div>
+    <div class="example">
+      <p>おすすめスポットを広める場所</p>	
+      <div class="b"><img class="c" src="/assets/bike3.jpg"></div>
+    </div>
+  </div>
+  <div class="e text-center">
+  <h3>さあ　はじめましょう</h3>
+  <p>
+  <%= link_to  "ログイン", new_user_session_path, class: "btn btn-primary" %>
+  <%= link_to  "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
+  </p>
+  </div>
 </div>
-
-
