@@ -2,25 +2,24 @@
   <h3>プロフィール詳細</h3>
   <div class="row">
     <div class="col-lg-4">
-      <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpeg", size: '300x300' %>
+      <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", size: '300x300' %>
     </div>
     <div class="col-lg-8">
       <div class="col-xs-12">
         <h1><%= @user.name %></h1>
-
-  <% if user_signed_in? && current_user != @user %>
-    <% if current_user.active_relationships.exists?(target_user_id: @user.id) %>
-      <%= link_to "フォローをやめる", [@user, :relationship], method: :delete %>
-    <% else %>
-      <%= link_to  "フォローする", [@user, :relationship], method: :post %>
-    <% end %>
-  <% end %>
+        <% if user_signed_in? && current_user != @user %>
+          <% if current_user.active_relationships.exists?(target_user_id: @user.id) %>
+            <%= link_to "フォローをやめる", [@user, :relationship], method: :delete %>
+          <% else %>
+            <%= link_to  "フォローする", [@user, :relationship], method: :post %>
+          <% end %>
+        <% end %>
       </div>
       <div class="col-xs-12">
-      <%= link_to [@user, :likes] do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>いいね一覧
-      <% end %>
-       <%= link_to "　フォロー数　", [@user, :followings] %><%= @user.followings.count %>人　 <%= link_to "　フォロワー数　", [@user, :followers] %><%= @user.followers.count %>人
+        <%= link_to [@user, :likes] do %>
+          <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>いいね一覧
+        <% end %>
+        <%= link_to "　フォロー数　", [@user, :followings] %><%= @user.followings.count %>人　 <%= link_to "　フォロワー数　", [@user, :followers] %><%= @user.followers.count %>人
       </div>
       <div class="col-xs-12">
         <%= @user.profile %>
@@ -44,7 +43,7 @@
       <div class="card-wrap">
         <div class="card">
           <div class="card-header align-items-center d-flex">
-            <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpeg", size: '50x50' %>
+            <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50' %>
             <%= link_to post.user.name, [post.user] %>
           </div>
           <%= link_to [post] do %>
@@ -53,21 +52,21 @@
           <div class="card-body">
             <div class="row parts">
               <div>
-              <%= post.caption %>
+                <%= post.caption %>
               </div>
               <hr>
               <p>コメント数<%= post.comments.count %>件</p>　　
-              <% if current_user.likes.exists?(post_id: post.id) %>
-          <%= link_to post_like_path(post), method: :delete do %>
-            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-            <%= post.likes.count %>
-          <% end %>
-        <% else %>
-          <%= link_to post_like_path(post), method: :post do %>
-            <i class="fa fa-heart-o" aria-hidden="true"></i>
-            <%= post.likes.count %>
-          <% end %>
-        <% end %>
+                <% if current_user.likes.exists?(post_id: post.id) %>
+                  <%= link_to post_like_path(post), method: :delete do %>
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <%= post.likes.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_like_path(post), method: :post do %>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <%= post.likes.count %>
+                  <% end %>
+                <% end %>
             </div>
           </div>
         </div>

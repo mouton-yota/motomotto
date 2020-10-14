@@ -2,7 +2,7 @@
   <div class="col-xl-7 col-lg-8 col-md-10 col-sm-11 post-card">
     <div class="card">
       <div class="card-header">
-        <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpeg", size: '50x50' %>
+        <%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50' %>
         <%= link_to @post.user.name, [@post.user] %>
       </div>
       <div class="card-body">
