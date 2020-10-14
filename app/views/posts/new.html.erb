@@ -8,7 +8,7 @@
         <%= form_with model: @post, local: true do |f| %>
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
-              <%= attachment_image_tag current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpeg", size: '50x50' %>
+              <%= attachment_image_tag current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50' %>
             </div>
             <div class="col pl-0">
               <% if @post.errors.any? %>
