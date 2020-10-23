@@ -68,6 +68,14 @@
                   <% end %>
                 <% end %>
             </div>
+            <hr>
+            <div>
+              <% post.tags.each do |tag| %>
+                <%= link_to  tag_path(tag.name) do %>
+                  <span class="badge badge-primary"><%= tag %></span>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

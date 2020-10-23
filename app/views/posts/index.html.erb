@@ -10,7 +10,7 @@
             <%= link_to post.user.name, [post.user] %>
           </div>
           <%= link_to [post] do %>
-            <%= image_tag post.image, class: "card-img-top" %>
+            <%= image_tag post.image, width: "300px", class: "card-img-top" %>
           <% end %>
           <div class="card-body">
             <div class="row parts">
@@ -18,7 +18,7 @@
                 <%= post.caption %>
               </div>
               <hr>
-              <p>コメント数<%= post.comments.count %>件</p>　　
+              <p>　コメント数<%= post.comments.count %>件</p>　　
               <% if current_user.likes.exists?(post_id: post.id) %>
                 <%= link_to post_like_path(post), method: :delete do %>
                   <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
@@ -31,6 +31,14 @@
                 <% end %>
               <% end %>
             </div>
+            <hr>
+                  <div>
+                  <% post.tags.each do |tag| %>
+                  <%= link_to  tag_path(tag.name) do %>
+                  <span class="badge badge-primary"><%= tag %></span>
+                  <% end %>
+                  <% end %>
+              </div>
           </div>
         </div>
       </div>

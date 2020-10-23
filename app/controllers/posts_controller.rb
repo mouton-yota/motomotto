@@ -9,12 +9,17 @@ class PostsController < ApplicationController
     def show
       @post = Post.find(params[:id])
       @comment = Comment.new
+      @tags = @post.tag_counts_on(:tags)
     end
 
     def create
       @post = current_user.posts.new(post_params)
 
       if @post.save
+        tags = Vision.get_image_data(@post.image)    
+        tags.each do |tag|
+          post.tags.create(name: tag)
+        end
         redirect_to posts_path
       else
         render :new
@@ -36,15 +41,20 @@ class PostsController < ApplicationController
     end
 
     def index
-      @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
-      # []内で*を入れる事で、二つの条件を展開、自分とフォロワーの投稿がタイムラインに出るようにする
-      # オプションを付けて、投稿が新しい物が上に来るようにする
+      if params[:tag]
+        @feeds = Post.tagged_with(params[:tag]).order(created_at: :desc)
+      else
+        @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+        # []内で*を入れる事で、二つの条件を展開、自分とフォロワーの投稿がタイムラインに出るようにする
+        # オプションを付けて、投稿が新しい物が上に来るようにする
+        @posts = Post.all
+      end
     end
 
 
     private
 
     def post_params
-      params.require(:post).permit(:caption, :image)
+      params.require(:post).permit(:caption, :image, :tag_list)
     end
 end

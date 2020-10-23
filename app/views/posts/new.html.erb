@@ -16,7 +16,9 @@
                   <div><%= message %></div>
                 <% end %>
               <% end %>
-              <%= f.text_area :caption, size: "50x5", placeholder: "コメント" %>
+              <%= f.text_area :caption, size: "50x5", placeholder: "コメント" %><br>
+              <%= f.label :タグ入力 %><br>
+              <%= f.text_field :tag_list, size: "50x1", value: @post.tag_list.join(','), placeholder: ",で区切ると複数入力できます"%>
             </div>
           </div>
           <div class="mb-3">

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'about', to: 'home#about'
   get 'searches', to: 'searches#search'
+  get 'tags/:tag', to: 'posts#index', as: :tag
 
   resources :posts do
     resource :like

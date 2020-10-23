@@ -11,6 +11,12 @@
         <%= @post.caption %>
       </div>
       <hr>
+      <% @post.tags.each do |tag| %>
+        <%= link_to  tag_path(tag.name) do %>
+                  <span class="badge badge-primary"><%= tag %></span>
+                  <% end %>
+                  <% end %>
+      <hr>
       <% @post.comments.each do |comment| %>
         <div>
           コメント一覧
