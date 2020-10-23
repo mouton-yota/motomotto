@@ -78,3 +78,5 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'dotenv-rails'
