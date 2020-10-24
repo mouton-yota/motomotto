@@ -9,7 +9,7 @@ module Vision
       host = ""
       if Rails.env.development?
       host = "http://localhost:3000"
-      else if Rails.env.prodcution?
+      else Rails.env.prodcution?
         host = "http://54.248.5.133"
       end
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
