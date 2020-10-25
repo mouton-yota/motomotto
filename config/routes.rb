@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  
+  authenticated :user do
+    root :to => "posts#index", :as => "user_authenticated_root"
+  end
 
   root 'home#top'
   get 'about', to: 'home#about'
