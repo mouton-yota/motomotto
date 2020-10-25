@@ -6,15 +6,18 @@ module Vision
   class << self
     def get_image_data(image_file)
       # APIのURL作成
-      host = ""
+        host = ""
       if Rails.env.development?
-      host = "http://localhost:3000"
+        host = "http://localhost:3000"
       else Rails.env.prodcution?
         host = "http://54.248.5.133"
       end
+      base64_url = host + "/#{Rails.application.routes.url_helpers.rails_blob_path(image_file)}"
+      puts base64_url
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
       # 画像をbase64にエンコード
-      base64_image = Base64.encode64(open("#{host}#{Rails.application.routes.url_helpers.rails_blob_path(image_file)}").read)
+      base64_image = Base64.encode64(open(base64_url).read)
+      # base64_image = Base64.encode64(open("#{host}#{Rails.application.routes.url_helpers.rails_blob_path(image_file)}").read)
       # base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{image_file.id}").read)
 
       # APIリクエスト用のJSONパラメータ
